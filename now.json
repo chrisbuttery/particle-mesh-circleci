@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "particle-mesh-circleci",
+  "builds": [{
+    "src": "./index.js",
+    "use": "@now/node-server"
+  }],
+  "routes": [
+    {
+      "src": "/api/display",
+      "methods": ["POST"],
+      "dest": "index.js"
+    }
+  ],
+  "env": {
+    "PDEVICE": "@mesh-pub-device",
+    "PUSER": "@mesh-pub-user",
+    "PPASS": "@mesh-pub-pass"
+  }
+}

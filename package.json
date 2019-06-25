@@ -1,0 +1,20 @@
+{
+  "name": "particle-mesh-circleci",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "particle-api-js": "^7.4.1"
+  },
+  "engines": {
+    "node": ">= 10.9"
+  }
+}
