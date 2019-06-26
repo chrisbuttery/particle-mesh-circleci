@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm install
+      # npm script 'foo' does not exist in our basic package.json, so should fail
+      - run: npm foo
+      - run:
+          name: Build Success
+          when: on_success
+          command: |
+            if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
+              echo "Success"
+            fi
+      - run:
+          name: Build Failed
+          when: on_fail
+          # update reference to path_to_your_api/display
+          command: |
+            if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
+              curl -d '{ "branch": "'"$CIRCLE_BRANCH"'", "user": "'"$CIRCLE_USERNAME"'"}' -H "Content-Type: application/json" -X POST path_to_your_api/display
+            fi
